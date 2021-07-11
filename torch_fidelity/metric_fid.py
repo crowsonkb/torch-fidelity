@@ -17,7 +17,7 @@ def fid_features_to_statistics(features):
     assert torch.is_tensor(features) and features.dim() == 2
     features = features.numpy()
     mu = np.mean(features, axis=0)
-    sigma = np.cov(features, rowvar=False)
+    sigma = np.cov(features, rowvar=False).astype(features.dtype)
     return {
         'mu': mu,
         'sigma': sigma,
